@@ -1,0 +1,17 @@
+version: "2.1"
+services:
+  code-server:
+    image: ghcr.io/linuxserver/code-server
+    container_name: code-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - PASSWORD=${PASSWORD}
+      - SUDO_PASSWORD=${SUDO_PASSWORD}
+      - PROXY_DOMAIN=${PROXY_DOMAIN}
+    volumes:
+      - ./config:/config
+    ports:
+      - 8080:8443
+    restart: unless-stopped
